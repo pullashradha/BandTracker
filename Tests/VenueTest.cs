@@ -12,9 +12,22 @@ namespace BandTracker
     {
       DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=band_tracker_test;Integrated Security=SSPI;";
     }
+    [Fact]
+    public void Test_Empty_EmptyDatabase()
+    {
+      int resultValue = Venue.GetAll().Count;
+      Assert.Equal(0, resultValue);
+    }
+    [Fact]
+    public void Test_Equals_EntriesMatch()
+    {
+      Venue firstVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue secondVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Assert.Equal(firstVenue, secondVenue);
+    }
     public void Dispose()
     {
-      Venue.DeleteAll();
+      // Venue.DeleteAll();
     }
   }
 }
