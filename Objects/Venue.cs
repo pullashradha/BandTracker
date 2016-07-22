@@ -237,6 +237,62 @@ namespace BandTracker
       }
       return allVenues[0];
     }
+    public void Update()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlDataReader rdr;
+      SqlCommand cmd = new SqlCommand ("UPDATE venues SET name = @NewVenueName, street_address = @NewVenueStreetAddress, city_address = @NewVenueCity, state_address = @NewVenueState, zipcode = @NewVenueZipcode, phone_number = @NewVenuePhoneNumber, website = @NewVenueWebsite, event_date = @NewVenueEventDate WHERE id = @VenueId;", conn);
+      SqlParameter newNameParameter = new SqlParameter();
+      newNameParameter.ParameterName = "@NewVenueName";
+      newNameParameter.Value = this.GetName();
+      SqlParameter newStreetAddressParameter = new SqlParameter();
+      newStreetAddressParameter.ParamterName = "@NewVenueStreetAddress";
+      newStreetAddressParameter.Value = this.GetStreetAddress();
+      SqlParameter newCityParameter = new SqlParameter();
+      newCityParameter.ParameterName = "@NewVenueCity";
+      newCityParameter.Value = this.GetCity();
+      SqlParameter newStateParameter = new SqlParameter();
+      newStateParameter.ParameterName = "@NewVenueState";
+      newStateParameter.Value = this.GetState();
+      SqlParameter newZipcodeParameter = new SqlParameter();
+      newZipcodeParameter.ParameterName = "@NewVenueZipcode";
+      newZipcodeParameter.Value = this.GetZipcode();
+      SqlParameter newPhoneNumberParameter = new SqlParameter();
+      newPhoneNumberParameter.ParameterName = "@NewVenuePhoneNumber";
+      newPhoneNumberParameter.Value = this.GetPhoneNUmber();
+      SqlParameter newWebsiteParameter = new SqlParameter();
+      newWebsiteParameter.ParameterName = "@NewVenueWebsite";
+      newWebsiteParameter.Value = this.GetWebsite();
+      SqlParameter newEventDateParameter = new SqlParameter();
+      newEventDateParameter.ParameterName = "@NewVenueEventDate";
+      newEventDateParameter.Value = this.GetEventDate();
+      SqlParameter idParameter = new SqlParameter();
+      idParameter.ParameterName = "@VenueId";
+      idParameter.Value = this.GetId();
+      cmd.ParametersAdd(newNameParameter);
+      cmd.Parameters.Add(newStreetAddressParameter);
+      cmd.Parameters.Add(newCityParameter);
+      cmd.Parameters.Add(newStateParameter);
+      cmd.Parameters.Add(newZipcodeParameter);
+      cmd.Parameters.Add(newPhoneNumberParameter);
+      cmd.Parameters.Add(newWebsiteParameter);
+      cmd.Parameters.Add(newEventDateParameter);
+      cmd.Parameters.Add(idParameter);
+      rdr = cmd.ExecuteReader();
+      while (rdr.Read())
+      {
+        this._id = rdr.GetInt32(0);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
     public void DeleteOne()
     {
       SqlConnection conn = DB.Connection();
