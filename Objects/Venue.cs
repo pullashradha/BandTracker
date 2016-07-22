@@ -149,5 +149,64 @@ namespace BandTracker
       }
       return allVenues;
     }
+    public void Save()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlDataReader rdr;
+      SqlCommand cmd = new SqlCommand ("INSERT INTO venues (name, street_address, city_address, state_address, zipcode, phone_number, website, event_date) OUTPUT INSERTED.id VALUES (@VenueName, @VenueStreetAddress, @VenueCity, @VenueState, @VenueZipcode, @VenuePhoneNumber, @VenueWebsite, @VenueEventDate);", conn);
+      SqlParameter nameParameter = new SqlParameter();
+      nameParameter.ParameterName = "@VenueName";
+      nameParameter.Value = this.GetName();
+      SqlParameter streetAddressParameter = new SqlParameter();
+      streetAddressParameter.ParameterName = "@VenueStreetAddress";
+      streetAddressParameter.Value = this.GetStreetAddress();
+      SqlParameter cityParameter = new SqlParameter();
+      cityParameter.ParameterName = "@VenueCity";
+      cityParameter.Value = this.GetCity();
+      SqlParameter stateParameter = new SqlParameter();
+      stateParameter.ParameterName = "@VenueState";
+      stateParameter.Value = this.GetState();
+      SqlParameter zipcodeParameter = new SqlParameter();
+      zipcodeParameter.ParameterName = "@VenueZipcode";
+      zipcodeParameter.Value = this.GetZipcode();
+      SqlParameter phoneNumberParameter = new SqlParameter();
+      phoneNumberParameter.ParameterName = "@VenuePhoneNumber";
+      phoneNumberParameter.Value = this.GetPhoneNumber();
+      SqlParameter websiteParameter = new SqlParameter();
+      websiteParameter.ParameterName = "@VenueWebsite";
+      websiteParameter.Value = this.GetWebsite();
+      SqlParameter eventDateParameter = new SqlParameter();
+      eventDateParameter.ParameterName = "@VenueEventDate";
+      eventDateParameter.Value = this.GetEventDate();
+      cmd.Parameters.Add(nameParameter);
+      cmd.Parameters.Add(streetAddressParameter);
+      cmd.Parameters.Add(cityParameter);
+      cmd.Parameters.Add(stateParameter);
+      cmd.Parameters.Add(zipcodeParameter);
+      cmd.Parameters.Add(phoneNumberParameter);
+      cmd.Parameters.Add(websiteParameter);
+      cmd.Parameters.Add(eventDateParameter);
+      rdr = cmd.ExecuteReader();
+      while (rdr.Read())
+      {
+        this._id = rdr.GetInt32(0);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+    public static void DeleteAll()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlCommand cmd = new SqlCommand ("DELETE FROM venues;", conn);
+      cmd.ExecuteNonQuery();
+    }
   }
 }
