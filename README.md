@@ -82,6 +82,7 @@ If SQL is not connected in the PowerShell, open SSMS and click the "New Query" b
 ## Known Bugs
 
 * When adding a new band on venue.cshtml, the event date/time cannot be entered in and will be a default value.
+* Can create duplicate entries of a band or venue.
 
 ## Specifications
 
@@ -107,6 +108,7 @@ Delete all venues | Venues: 3 | Venues: 0
 HTML | CSS | C#
 ----- | ----- | -----
 --- | --- | Add DateTime option to add time of event at venue
+--- | --- | Allow user to add band to already existing venue & vice versa
 --- | --- | Allow user to delete band from database but keep information of band in the venue page though it can't be altered, just to view past performers
 
 ## Support and Contact Details
