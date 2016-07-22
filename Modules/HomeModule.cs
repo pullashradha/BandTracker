@@ -36,6 +36,11 @@ namespace BandTracker
         updatedBand.Update();
         return View ["band.cshtml", updatedBand];
       };
+      Post ["/bands/{id}/{name}/deleted"] = parameters => {
+        Band selectedBand = Band.Find(parameters.id);
+        selectedBand.DeleteOne();
+        return View ["deleted.cshtml", selectedBand];
+      };
       Post ["/bands/deleted"] = _ => {
         Band.DeleteAll();
         return View ["bands.cshtml", Band.GetAll()];
@@ -76,6 +81,11 @@ namespace BandTracker
         );
         updatedVenue.Update();
         return View ["venue.cshtml", updatedVenue];
+      };
+      Post ["/venues/{id}/{name}/updated"] = parameters => {
+        Venue selectedVenue = Venue.Find(parameters.id);
+        selectedVenue.DeleteOne();
+        return View ["deleted.cshtml", selectedVenue];
       };
       Post ["/venues/deleted"] = _ => {
         Venue.DeleteAll();
