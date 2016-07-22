@@ -24,26 +24,26 @@ namespace BandTracker
         Band selectedBand = Band.Find(parameters.id);
         return View ["band.cshtml", selectedBand];
       };
-      // Post ["/venues/new"] = _ => {
-      //   Venue newVenue = new Venue
-      //   (
-      //     Request.Form ["venue-id"],
-      //     Request.Form ["venue-name"],
-      //     Request.Form ["venue-street-address"],
-      //     Request.Form ["venue-city"],
-      //     Request.Form ["venue-state"],
-      //     Request.Form ["venue-zipcode"],
-      //     Request.Form ["venue-phone-number"],
-      //     Request.Form ["venue-website"],
-      //     Request.Form ["venue-event-date"]
-      //   );
-      //   newVenue.Save();
-      //   return View ["venues.cshtml", Venue.GetAll()];
-      // };
-      // Post ["/venues/{id}/{name}"] = parameters => {
-      //   Venue selectedVenue = Venue.Find(parameters.id);
-      //   return View ["venue.cshtml", selectedVenue];
-      // };
+      Post ["/venues/new"] = _ => {
+        Venue newVenue = new Venue
+        (
+          Request.Form ["venue-id"],
+          Request.Form ["venue-name"],
+          Request.Form ["venue-street-address"],
+          Request.Form ["venue-city"],
+          Request.Form ["venue-state"],
+          Request.Form ["venue-zipcode"],
+          Request.Form ["venue-phone-number"],
+          Request.Form ["venue-website"],
+          Request.Form ["venue-event-date"]
+        );
+        newVenue.Save();
+        return View ["venues.cshtml", Venue.GetAll()];
+      };
+      Post ["/venues/{id}/{name}"] = parameters => {
+        Venue selectedVenue = Venue.Find(parameters.id);
+        return View ["venue.cshtml", selectedVenue];
+      };
     }
   }
 }
