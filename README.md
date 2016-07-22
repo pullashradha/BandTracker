@@ -30,6 +30,55 @@ This program can only be accessed on a PC with Windows 10, and with Git, Atom, a
   * Type following command into PowerShell > dnx kestrel
   * Open Chrome and type in the following address: localhost:5004
 
+## Database Creation Instructions
+
+To build the databases from scratch, type the commands below in the Windows PowerShell:
+  Desktop> SQLCMD -S "[Server-Name]";
+  1> CREATE DATABASE band_tracker;
+  2> GO
+  3> USE band_tracker;
+  4> GO
+  5> CREATE TABLE bands
+  6>  (
+  7>  id INT IDENTITY(1,1),
+  8>  name VARCHAR(255),
+  9>  music_genre VARCHAR(255),
+  10> description VARCHAR(500),
+  11> website VARCHAR(255)
+  12> );
+  13> GO
+  14> CREATE TABLE venues
+  15> (
+  16> id INT IDENTITY(1,1),
+  17> name VARCHAR(255),
+  18> street_address VARCHAR(255),
+  19> city_address VARCHAR(255),
+  20> state_address VARCHAR(255),
+  21> zipcode VARCHAR(255),
+  22> phone_number VARCHAR(255),
+  23> website VARCHAR(255),
+  24> event_date DATETIME
+  25> );
+  26> GO
+  27> CREATE TABLE bands_venues
+  28> (
+  29> id INT IDENTITY(1,1),
+  30> band_id INT,
+  31> venue_id INT
+  32> );
+  33> GO
+  * Exit out of SQLCMD by typing> QUIT
+  * Open SSMS, click open Databases folder and check that the band_tracker database has been created
+  * Click "New Query" button on top nav bar (above "!Execute")
+  * Type following command into query text space to backup database: BACKUP DATABASE band_tracker TO DISK = 'C:\Users\[Account-Name]\band_tracker.bak'
+  * Click "!Execute"
+  * Right click band_tracker in the Databases folder: Tasks>Restore>Database
+  * Confirm that there is a database to restore in the "Backup sets to restore" option field
+  * Under the "Destination" input form, change the database name to: "band_tracker_test"
+  * Click "OK", refresh SSMS, and view the new test database in the Database folder
+
+If SQL is not connected in the PowerShell, open SSMS and click the "New Query" button (in nav bar above "!Execute"). Type commands shown above into the text space, starting from "CREATE DATABASE...".
+
 ## Known Bugs
 
 No known bugs.
