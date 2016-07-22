@@ -44,7 +44,7 @@ namespace BandTracker
       newVenue.AddBand(newBand);
       List<Band> testBandList = new List<Band> {newBand};
       List<Band> resultBandList = newVenue.GetBands();
-      Assert.Equals(testBandList, resultBandList);
+      Assert.Equal(testBandList, resultBandList);
     }
     [Fact]
     public void Test_Find_ReturnsVenueById()
@@ -79,6 +79,7 @@ namespace BandTracker
     public void Dispose()
     {
       Venue.DeleteAll();
+      Band.DeleteAll();
     }
   }
 }
