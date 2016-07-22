@@ -20,13 +20,13 @@ namespace BandTracker
         newBand.Save();
         return View ["bands.cshtml", Band.GetAll()];
       };
-      Post ["/bands/{id}/{name}"] = parameters => {
+      Get ["/bands/{id}/{name}"] = parameters => {
         Band selectedBand = Band.Find(parameters.id);
         return View ["band.cshtml", selectedBand];
       };
       Post ["/bands/{id}/{name}/updated"] = parameters => {
         Band selectedBand = Band.Find(parameters.id);
-        Band updatedBand = selectedBand
+        Band updatedBand = new Band
         (
           Request.Form ["update-band-name"],
           Request.Form ["update-band-music-genre"],
@@ -61,13 +61,13 @@ namespace BandTracker
         newVenue.Save();
         return View ["venues.cshtml", Venue.GetAll()];
       };
-      Post ["/venues/{id}/{name}"] = parameters => {
+      Get ["/venues/{id}/{name}"] = parameters => {
         Venue selectedVenue = Venue.Find(parameters.id);
         return View ["venue.cshtml", selectedVenue];
       };
       Post ["/venues/{id}/{name}/updated"] = parameters => {
         Venue selectedVenue = Venue.Find(parameters.id);
-        Venue updatedVenue = selectedVenue
+        Venue updatedVenue = new Venue
         (
           Request.Form ["update-venue-id"],
           Request.Form ["update-venue-name"],
