@@ -38,13 +38,26 @@ No known bugs.
 
 The program should ... | Example Input | Example Output
 ----- | ----- | -----
-Spec 1 | Example Input: | Example Output:
+Create and add a new band to the database | --- | ---
+Update a band's information | --- | ---
+View a band | --- | ---
+View all bands | --- | ---
+View all venues a band has played at | --- | ---
+Delete one band | --- | ---
+Delete all bands | --- | ---
+Create and add a new venue to the database | --- | ---
+Update a venue's information | --- | ---
+View a venue | --- | ---
+View all venues | --- | ---
+View all bands that have played at a venue | --- | ---
+Delete one venue | --- | ---
+Delete all venues | --- | ---
 
 ## Future Features
 
 HTML | CSS | C#
 ----- | ----- | -----
------ | ----- | -----
+--- | --- | ---
 
 ## Support and Contact Details
 
