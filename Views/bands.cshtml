@@ -17,9 +17,19 @@
   }
   <form class="form-group" action="/bands/new" method="post">
     <div class="row">
-      <button type="button" class="col-xs-6 btn btn-success">Add New Band</button>
-      <button type="button" class="col-xs-6 btn btn-danger" formaction="/bands/deleted">Delete All Bands</button>
+      <div class="col-xs-3">
+        <p>Name <input required type="text" name="band-name" class="form-control"></p>
+      </div>
+      <div class="col-xs-3">
+        <p>Music Genre <input required type="text" name="band-music-genre" class="form-control"></p>
+      </div>
     </div>
+    <p>Description <input required type="text" name="band-description" class="form-control"></p>
+    <p>Website <input required type="text" name="band-website" class="form-control"></p>
+    <button type="button" class="btn btn-success">Add New Band</button>
+  </form>
+  <form class="form-group" action="/bands/deleted" method="post">
+    <button type="button" class="btn btn-danger">Delete All Bands</button>
   </form>
   <a href="/">Home</a>
 </body>
