@@ -107,6 +107,7 @@ Delete all venues | Venues: 3 | Venues: 0
 HTML | CSS | C#
 ----- | ----- | -----
 --- | --- | Add DateTime option to add time of event at venue
+--- | --- | Allow user to delete band from database but keep information of band in the venue page though it can't be altered, just to view past performers
 
 ## Support and Contact Details
 
