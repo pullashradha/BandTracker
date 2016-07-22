@@ -32,7 +32,6 @@ namespace BandTracker
         selectedBand.SetDescription(Request.Form ["update-band-description"]);
         selectedBand.SetWebsite(Request.Form ["update-band-website"]);
         selectedBand.Update();
-        updatedBand.Update();
         return View ["band.cshtml", selectedBand];
       };
       Post ["/bands/{id}/{name}/new"] = parameters => {
@@ -66,7 +65,6 @@ namespace BandTracker
       Post ["/venues/new"] = _ => {
         Venue newVenue = new Venue
         (
-          Request.Form ["venue-id"],
           Request.Form ["venue-name"],
           Request.Form ["venue-street-address"],
           Request.Form ["venue-city"],
