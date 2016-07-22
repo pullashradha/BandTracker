@@ -42,6 +42,18 @@ namespace BandTracker
       Venue foundVenue = Venue.Find(newVenue.GetId());
       Assert.Equal(newVenue, foundVenue);
     }
+    [Fact]
+    public void Test_DeleteOne_DeletesOneVenue()
+    {
+      Venue firstVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue secondVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      firstVenue.Save();
+      secondVenue.Save();
+      List<Venue> testList = new List<Venue> {secondVenue};
+      firstVenue.DeleteOne();
+      List<Venue> resultList = Venue.GetAll();
+      Assert.Equal(testList, resultList);
+    }
     public void Dispose()
     {
       Venue.DeleteAll();
