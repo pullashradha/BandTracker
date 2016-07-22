@@ -247,7 +247,7 @@ namespace BandTracker
       newNameParameter.ParameterName = "@NewVenueName";
       newNameParameter.Value = this.GetName();
       SqlParameter newStreetAddressParameter = new SqlParameter();
-      newStreetAddressParameter.ParamterName = "@NewVenueStreetAddress";
+      newStreetAddressParameter.ParameterName = "@NewVenueStreetAddress";
       newStreetAddressParameter.Value = this.GetStreetAddress();
       SqlParameter newCityParameter = new SqlParameter();
       newCityParameter.ParameterName = "@NewVenueCity";
@@ -260,7 +260,7 @@ namespace BandTracker
       newZipcodeParameter.Value = this.GetZipcode();
       SqlParameter newPhoneNumberParameter = new SqlParameter();
       newPhoneNumberParameter.ParameterName = "@NewVenuePhoneNumber";
-      newPhoneNumberParameter.Value = this.GetPhoneNUmber();
+      newPhoneNumberParameter.Value = this.GetPhoneNumber();
       SqlParameter newWebsiteParameter = new SqlParameter();
       newWebsiteParameter.ParameterName = "@NewVenueWebsite";
       newWebsiteParameter.Value = this.GetWebsite();
@@ -270,7 +270,7 @@ namespace BandTracker
       SqlParameter idParameter = new SqlParameter();
       idParameter.ParameterName = "@VenueId";
       idParameter.Value = this.GetId();
-      cmd.ParametersAdd(newNameParameter);
+      cmd.Parameters.Add(newNameParameter);
       cmd.Parameters.Add(newStreetAddressParameter);
       cmd.Parameters.Add(newCityParameter);
       cmd.Parameters.Add(newStateParameter);

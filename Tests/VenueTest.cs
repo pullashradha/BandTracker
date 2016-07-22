@@ -45,11 +45,11 @@ namespace BandTracker
     [Fact]
     public void Test_Update_UpdatesVenueInformation()
     {
-      Venue newVenue = ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
       newVenue.Save();
       newVenue.SetEventDate(new DateTime (2020, 4, 25));
+      newVenue.Update();
       Venue updatedVenue = Venue.Find(newVenue.GetId());
-      updatedVenue.Update();
       Assert.Equal(newVenue.GetEventDate(), updatedVenue.GetEventDate());
     }
     [Fact]
