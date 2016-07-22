@@ -7,6 +7,7 @@
   <h2>@Model.GetWebsite()</h2>
   <h3>@Model.GetPhoneNumber()</h3>
   <h3>@Model.GetStreetAddress() @Model.GetCity(), @Model.GetState() @Model.GetZipcode()</h3>
+  <h3>Update Venue</h3>
   <form class="form-group" action="/venues/@Model.GetId()/@Model.GetName()/updated" method="post">
     <p>Name <input required type="text" name="update-venue-name" class="form-control"></p>
     <div class="row">
@@ -42,6 +43,20 @@
   {
     <h2>@band.GetName() on @Model.GetEventDate()</h2>
   }
+  <h3>Add New Band</h3>
+  <form class="form-group" action="/venues/@Model.GetId()/@Model.GetName()/band/new" method="post">
+    <div class="row">
+      <div class="col-xs-3">
+        <p>Name <input required type="text" name="band-name" class="form-control"></p>
+      </div>
+      <div class="col-xs-3">
+        <p>Music Genre <input required type="text" name="band-music-genre" class="form-control"></p>
+      </div>
+    </div>
+    <p>Description <input required type="text" name="band-description" class="form-control"></p>
+    <p>Website <input required type="text" name="band-website" class="form-control"></p>
+    <button type="submit" class="btn btn-primary">Add New Band</button>
+  </form>
   <a href="/venues">Venues List</a>
   <a href="/">Home</a>
 </body>
