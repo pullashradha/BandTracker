@@ -22,12 +22,19 @@
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
   <h2>View All Venues This Band Has Played At</h2>
-  @foreach (var venue in Model.GetVenues())
+  @if (Model.GetVenues().Count == 0)
   {
-    <h2>@venue.GetName() on @venue.GetEventDate()</h2>
+    <h3>There are currently no venues in our records</h3>
+  }
+  else
+  {
+    @foreach (var venue in Model.GetVenues())
+    {
+      <h2>@venue.GetName() on @venue.GetEventDate()</h2>
+    }
   }
   <h3>Add New Venue</h3>
-  <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/venue/new" method="post">
+  <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/new" method="post">
     <p>Name <input required type="text" name="update-venue-name" class="form-control"></p>
     <div class="row">
       <div class="col-xs-3">
