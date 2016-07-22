@@ -1,0 +1,19 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/styles.css" type="text/css">
+</head>
+<body>
+  <h1 class="page-header">@Model.GetName()</h1>
+  <h2>@Model.GetDescription()</h2>
+  <h3>Genre: @Model.GetMusicGenre()</h3>
+  <h3>@Model.GetWebsite()</h3>
+  <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/updated" method="post">
+    <div class="row">
+      <button type="button" class="col-xs-6 btn btn-primary">Update Band</button>
+      <button type="button" class="col-xs-6 btn btn-danger" formaction="/bands/deleted">Delete Band</button>
+    </div>
+  </form>
+  <h2>View All Venues This Band Has Played At</h2>
+  <a href="/bands">Bands List</a>
+  <a href="/">Home</a>
+</body>

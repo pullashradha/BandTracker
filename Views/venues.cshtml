@@ -12,7 +12,7 @@
   {
     @foreach (var venue in Model)
     {
-      <h2>@venue.GetName()</h2>
+      <a href="/venues/@venue.GetId()/@venue.GetName()"><h2>@venue.GetName()</h2></a>
     }
   }
   <form class="form-group" action="/venues/new" method="post">

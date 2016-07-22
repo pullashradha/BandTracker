@@ -1,0 +1,19 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/styles.css" type="text/css">
+</head>
+<body>
+  <h1 class="page-header">@Model.GetName()</h1>
+  <h2>@Model.GetWebsite()</h2>
+  <h3>@Model.GetPhoneNumber()</h3>
+  <h3>@Model.GetStreetAddress() @Model.GetCity(), @Model.GetState() @Model.GetZipcode()</h3>
+  <form class="form-group" action="/venues/@Model.GetId()/@Model.GetName()/updated" method="post">
+    <div class="row">
+      <button type="button" class="col-xs-6 btn btn-primary">Update Venue</button>
+      <button type="button" class="col-xs-6 btn btn-danger" formaction="/venues/deleted">Delete Venue</button>
+    </div>
+  </form>
+  <h2>View All Bands That Have Played At This Venue</h2>
+  <a href="/venues">Venues List</a>
+  <a href="/">Home</a>
+</body>
