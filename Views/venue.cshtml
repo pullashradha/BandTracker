@@ -38,6 +38,10 @@
     <button type="button" class="btn btn-danger">Delete Venue</button>
   </form>
   <h2>View All Bands That Have Played At This Venue</h2>
+  @foreach (var band in Model.GetBands())
+  {
+    <h2>@band.GetName() on @Model.GetEventDate()</h2>
+  }
   <a href="/venues">Venues List</a>
   <a href="/">Home</a>
 </body>
