@@ -25,7 +25,7 @@ This program can only be accessed on a PC with Windows 10, and with Git, Atom, a
   * Repeat the above steps to import the test database
 * Test the program:
   * Type following command into PowerShell > dnx test
-  * All tests should be passing, if not run dnx test again
+  * All tests should be passing, if not run dnx test again. Otherwise fix the errors before launching the program on the browser
 * View the web page:
   * Type following command into PowerShell > dnx kestrel
   * Open Chrome and type in the following address: localhost:5004
@@ -82,7 +82,7 @@ If SQL is not connected in the PowerShell, open SSMS and click the "New Query" b
 ## Known Bugs
 
 * When adding a new band on venue.cshtml, the event date/time cannot be entered in and will be a default value.
-* Can create duplicate entries of a band or venue.
+* Can create duplicate entries of a band or venue that already exists.
 
 ## Specifications
 
@@ -90,14 +90,14 @@ The program should ... | Example Input | Example Output
 ----- | ----- | -----
 Create and add a new band to the database | Band: "One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com", add to database | Bands in Database: 1
 Update a band's information | Update One Ok Rock's description to: "The band is currently touring the US." | One Ok Rock: "The band is currently touring the US."
-View a band | View One Ok Rock | One Ok Rock: Genre-Pop/Rock, Description-Band from Japan, currently touring the US., Website-www.oneokrock.com
+View a band | View One Ok Rock | One Ok Rock: Genre-"Pop/Rock", Description-"Band from Japan, currently touring the US.", Website-"www.oneokrock.com"
 View all bands | Bands: 1 | Bands: One Ok Rock
-View all venues a band has played at | One Ok Rock Venues: 1 | Crossroads MegaStadium, Seattle, Washington
+View all venues a band has played at | One Ok Rock Venues: 1 | "Crossroads MegaStadium, Seattle, Washington"
 Delete one band | Bands: 1 | Bands: 0
 Delete all bands | Bands: 3 | Bands: 0
 Create and add a new venue to the database | Venue: "Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", "3/25/2020" | Venues in Database: 1
 Update a venue's information | Update Crossroads MegaStadium event date to: 4/25/2020 | CrossRoads MegaStadium: 4/25/2020
-View a venue | View Crossroads MegaStadium | CrossRoads MegaStadium: Address-101 SW Washington St., Seattle, Washington 97206, Phone Number- 555-555-5555, Website- www.crossroadstadium.com, Event Date- 3/25/2020
+View a venue | View Crossroads MegaStadium | CrossRoads MegaStadium: Address-"101 SW Washington St., Seattle, Washington 97206", Phone Number- 555-555-5555, Website-" www.crossroadstadium.com", Event Date- 3/25/2020
 View all venues | Venues: 1 | Venues: Crossroads MegaStadium
 View all bands that have played at a venue | Crossroad MegaStadium Bands: 1 | One Ok Rock, Pop/Rock
 Delete one venue | Venues: 1 | Venues: 0
@@ -107,8 +107,8 @@ Delete all venues | Venues: 3 | Venues: 0
 
 HTML | CSS | C#
 ----- | ----- | -----
---- | --- | Add DateTime option to add time of event at venue
---- | --- | Allow user to add band to already existing venue & vice versa
+Add a better input form to set event date | --- | Add DateTime option to allow time input in a different field
+Add drop down bar for existing venues & bands | --- | Allow user to add band to already existing venue & vice versa
 --- | --- | Allow user to delete band from database but keep information of band in the venue page though it can't be altered, just to view past performers
 
 ## Support and Contact Details
