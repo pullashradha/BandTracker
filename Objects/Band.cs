@@ -106,39 +106,23 @@ namespace BandTracker
       SqlConnection conn = DB.Connection();
       conn.Open();
       SqlDataReader rdr;
-      SqlCommand cmd = new SqlCommand ("INSERT INTO bands (name, street_address, city_address, state_address, zipcode, phone_number, website, event_date) OUTPUT INSERTED.id VALUES (@BandName, @BandStreetAddress, @BandCity, @BandState, @BandZipcode, @BandPhoneNumber, @BandWebsite, @BandEventDate);", conn);
+      SqlCommand cmd = new SqlCommand ("INSERT INTO bands (name, music_genre, description, website) OUTPUT INSERTED.id VALUES (@BandName, @BandMusicGenre, @BandDescription, @BandWebsite);", conn);
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@BandName";
       nameParameter.Value = this.GetName();
-      SqlParameter streetAddressParameter = new SqlParameter();
-      streetAddressParameter.ParameterName = "@BandStreetAddress";
-      streetAddressParameter.Value = this.GetStreetAddress();
-      SqlParameter cityParameter = new SqlParameter();
-      cityParameter.ParameterName = "@BandCity";
-      cityParameter.Value = this.GetCity();
-      SqlParameter stateParameter = new SqlParameter();
-      stateParameter.ParameterName = "@BandState";
-      stateParameter.Value = this.GetState();
-      SqlParameter zipcodeParameter = new SqlParameter();
-      zipcodeParameter.ParameterName = "@BandZipcode";
-      zipcodeParameter.Value = this.GetZipcode();
-      SqlParameter phoneNumberParameter = new SqlParameter();
-      phoneNumberParameter.ParameterName = "@BandPhoneNumber";
-      phoneNumberParameter.Value = this.GetPhoneNumber();
+      SqlParameter musicGenreParameter = new SqlParameter();
+      musicGenreParameter.ParameterName = "@BandMusicGenre";
+      musicGenreParameter.Value = this.GetMusicGenre();
+      SqlParameter descriptionParameter = new SqlParameter();
+      descriptionParameter.ParameterName = "@BandDescription";
+      descriptionParameter.Value = this.GetDescription();
       SqlParameter websiteParameter = new SqlParameter();
       websiteParameter.ParameterName = "@BandWebsite";
       websiteParameter.Value = this.GetWebsite();
-      SqlParameter eventDateParameter = new SqlParameter();
-      eventDateParameter.ParameterName = "@BandEventDate";
-      eventDateParameter.Value = this.GetEventDate();
       cmd.Parameters.Add(nameParameter);
-      cmd.Parameters.Add(streetAddressParameter);
-      cmd.Parameters.Add(cityParameter);
-      cmd.Parameters.Add(stateParameter);
-      cmd.Parameters.Add(zipcodeParameter);
-      cmd.Parameters.Add(phoneNumberParameter);
+      cmd.Parameters.Add(musicGenreParameter);
+      cmd.Parameters.Add(descriptionParameter);
       cmd.Parameters.Add(websiteParameter);
-      cmd.Parameters.Add(eventDateParameter);
       rdr = cmd.ExecuteReader();
       while (rdr.Read())
       {
@@ -169,14 +153,10 @@ namespace BandTracker
       {
         int bandId = rdr.GetInt32(0);
         string bandName = rdr.GetString(1);
-        string bandStreetAddress = rdr.GetString(2);
-        string bandCity = rdr.GetString(3);
-        string bandState = rdr.GetString(4);
-        string bandZipcode = rdr.GetString(5);
-        string bandPhoneNumber = rdr.GetString(6);
-        string bandWebsite = rdr.GetString(7);
-        DateTime bandEventDate = rdr.GetDateTime(8);
-        Band newBand = new Band (bandName, bandStreetAddress, bandCity, bandState, bandZipcode, bandPhoneNumber, bandWebsite, bandEventDate, bandId);
+        string bandMusicGenre = rdr.GetString(2);
+        string bandDescription = rdr.GetString(3);
+        string bandWebsite = rdr.GetString(4);
+        Band newBand = new Band (bandName, bandMusicGenre, bandDescription, bandWebsite, bandId);
         allBands.Add(newBand);
       }
       if (rdr != null)
