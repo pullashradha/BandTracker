@@ -33,10 +33,7 @@
       </div>
     </div>
     <p>Event Date <input required type="datetime" name="update-venue-event-date" class="form-control"></p>
-    <button type="submit" class="btn btn-primary">Update Venue</button>
-  </form>
-  <form class="form-group" action="/venues/@Model.GetId()/@Model.GetName()/deleted" method="post">
-    <button type="button" class="btn btn-danger">Delete Venue</button>
+    <button type="submit" class="btn btn-primary">Update</button>
   </form>
   <h2>View All Bands That Have Played At This Venue</h2>
   @foreach (var band in Model.GetBands())
@@ -55,7 +52,10 @@
     </div>
     <p>Description <input required type="text" name="band-description" class="form-control"></p>
     <p>Website <input required type="text" name="band-website" class="form-control"></p>
-    <button type="submit" class="btn btn-primary">Add New Band</button>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  <form class="form-group" action="/venues/@Model.GetId()/@Model.GetName()/deleted" method="post">
+    <button type="button" class="btn btn-danger">Delete Venue</button>
   </form>
   <a href="/venues">Venues List</a>
   <a href="/">Home</a>

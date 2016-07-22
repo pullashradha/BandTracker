@@ -15,6 +15,7 @@
       <a href="/venues/@venue.GetId()/@venue.GetName()"><h2>@venue.GetName()</h2></a>
     }
   }
+  <h3>Add New Venue</h3>
   <form class="form-group" action="/venues/new" method="post">
     <p>Name <input required type="text" name="venue-name" class="form-control"></p>
     <div class="row">
@@ -40,7 +41,7 @@
       </div>
     </div>
     <p>Event Date <input required type="datetime" name="venue-event-date" class="form-control"></p>
-    <button type="submit" class="btn btn-success">Add New Venue</button>
+    <button type="submit" class="btn btn-success">Add</button>
   </form>
   <form class="form-group" action="/venues/deleted" method="post">
     <button type="button" class="btn btn-danger">Delete All Venues</button>

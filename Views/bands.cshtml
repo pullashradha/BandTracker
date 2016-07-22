@@ -15,6 +15,7 @@
       <a href="/bands/@band.GetId()/@band.GetName()"><h2>@band.GetName()</h2></a>
     }
   }
+  <h3>Add New Band</h3>
   <form class="form-group" action="/bands/new" method="post">
     <div class="row">
       <div class="col-xs-3">
@@ -26,7 +27,7 @@
     </div>
     <p>Description <input required type="text" name="band-description" class="form-control"></p>
     <p>Website <input required type="text" name="band-website" class="form-control"></p>
-    <button type="submit" class="btn btn-success">Add New Band</button>
+    <button type="submit" class="btn btn-success">Add</button>
   </form>
   <form class="form-group" action="/bands/deleted" method="post">
     <button type="button" class="btn btn-danger">Delete All Bands</button>
