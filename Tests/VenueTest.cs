@@ -34,18 +34,18 @@ namespace BandTracker
       List<Venue> resultList = Venue.GetAll();
       Assert.Equal(testList, resultList);
     }
-    // [Fact]
-    // public void Test_AddBand_SavesBandToVenue()
-    // {
-    //   Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
-    //   newVenue.Save();
-    //   Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
-    //   newBand.Save();
-    //   newVenue.AddBand(newBand);
-    //   List<Band> testBandList = new List<Band> {newBand};
-    //   List<Band> resultBandList = newVenue.GetBands();
-    //   Assert.Equals(testBandList, resultBandList);
-    // }
+    [Fact]
+    public void Test_AddBand_SavesBandToVenue()
+    {
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      newVenue.Save();
+      Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
+      newBand.Save();
+      newVenue.AddBand(newBand);
+      List<Band> testBandList = new List<Band> {newBand};
+      List<Band> resultBandList = newVenue.GetBands();
+      Assert.Equals(testBandList, resultBandList);
+    }
     [Fact]
     public void Test_Find_ReturnsVenueById()
     {

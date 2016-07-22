@@ -117,38 +117,6 @@ namespace BandTracker
         return false;
       }
     }
-    public static List<Venue> GetAll()
-    {
-      List<Venue> allVenues = new List<Venue> {};
-      SqlConnection conn = DB.Connection();
-      conn.Open();
-      SqlDataReader rdr;
-      SqlCommand cmd = new SqlCommand ("SELECT * FROM venues;", conn);
-      rdr = cmd.ExecuteReader();
-      while (rdr.Read())
-      {
-        int venueId = rdr.GetInt32(0);
-        string venueName = rdr.GetString(1);
-        string venueStreetAddress = rdr.GetString(2);
-        string venueCity = rdr.GetString(3);
-        string venueState = rdr.GetString(4);
-        string venueZipcode = rdr.GetString(5);
-        string venuePhoneNumber = rdr.GetString(6);
-        string venueWebsite = rdr.GetString(7);
-        DateTime venueEventDate = rdr.GetDateTime(8);
-        Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueEventDate, venueId);
-        allVenues.Add(newVenue);
-      }
-      if (rdr != null)
-      {
-        rdr.Close();
-      }
-      if (conn != null)
-      {
-        conn.Close();
-      }
-      return allVenues;
-    }
     public void Save()
     {
       SqlConnection conn = DB.Connection();
@@ -197,6 +165,57 @@ namespace BandTracker
         rdr.Close();
       }
       if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+    public static List<Venue> GetAll()
+    {
+      List<Venue> allVenues = new List<Venue> {};
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlDataReader rdr;
+      SqlCommand cmd = new SqlCommand ("SELECT * FROM venues;", conn);
+      rdr = cmd.ExecuteReader();
+      while (rdr.Read())
+      {
+        int venueId = rdr.GetInt32(0);
+        string venueName = rdr.GetString(1);
+        string venueStreetAddress = rdr.GetString(2);
+        string venueCity = rdr.GetString(3);
+        string venueState = rdr.GetString(4);
+        string venueZipcode = rdr.GetString(5);
+        string venuePhoneNumber = rdr.GetString(6);
+        string venueWebsite = rdr.GetString(7);
+        DateTime venueEventDate = rdr.GetDateTime(8);
+        Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueEventDate, venueId);
+        allVenues.Add(newVenue);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return allVenues;
+    }
+    public void AddBand (Band newBand)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlCommand cmd = new SqlCommand ("INSERT INTO bands_venues (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
+      SqlParameter bandIdParameter = new SqlParameter();
+      bandIdParameter.ParameterName = "@BandId";
+      bandIdParameter.Value = newBand.GetId();
+      SqlParameter venueIdParameter = new SqlParameter();
+      venueIdParameter.ParameterName = "@VenueId";
+      venueIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(bandIdParameter);
+      cmd.Parameters.Add(venueIdParameter);
+      cmd.ExecuteNonQuery();
+      if (conn != null )
       {
         conn.Close();
       }

@@ -73,34 +73,6 @@ namespace BandTracker
         return false;
       }
     }
-    public static List<Band> GetAll()
-    {
-      List<Band> allBands = new List<Band> {};
-      SqlConnection conn = DB.Connection();
-      conn.Open();
-      SqlDataReader rdr;
-      SqlCommand cmd = new SqlCommand ("SELECT * FROM bands;", conn);
-      rdr = cmd.ExecuteReader();
-      while (rdr.Read())
-      {
-        int bandId = rdr.GetInt32(0);
-        string bandName = rdr.GetString(1);
-        string bandMusicGenre = rdr.GetString(2);
-        string bandDescription = rdr.GetString(3);
-        string bandWebsite = rdr.GetString(4);
-        Band newBand = new Band (bandName, bandMusicGenre, bandDescription, bandWebsite, bandId);
-        allBands.Add(newBand);
-      }
-      if (rdr != null)
-      {
-        rdr.Close();
-      }
-      if (conn != null)
-      {
-        conn.Close();
-      }
-      return allBands;
-    }
     public void Save()
     {
       SqlConnection conn = DB.Connection();
@@ -136,6 +108,34 @@ namespace BandTracker
       {
         conn.Close();
       }
+    }
+    public static List<Band> GetAll()
+    {
+      List<Band> allBands = new List<Band> {};
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlDataReader rdr;
+      SqlCommand cmd = new SqlCommand ("SELECT * FROM bands;", conn);
+      rdr = cmd.ExecuteReader();
+      while (rdr.Read())
+      {
+        int bandId = rdr.GetInt32(0);
+        string bandName = rdr.GetString(1);
+        string bandMusicGenre = rdr.GetString(2);
+        string bandDescription = rdr.GetString(3);
+        string bandWebsite = rdr.GetString(4);
+        Band newBand = new Band (bandName, bandMusicGenre, bandDescription, bandWebsite, bandId);
+        allBands.Add(newBand);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return allBands;
     }
     public static Band Find (int queryId)
     {
