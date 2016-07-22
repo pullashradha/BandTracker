@@ -38,7 +38,6 @@ namespace BandTracker
         Band selectedBand = Band.Find(parameters.id);
         Venue newVenue = new Venue
         (
-          Request.Form ["venue-id"],
           Request.Form ["venue-name"],
           Request.Form ["venue-street-address"],
           Request.Form ["venue-city"],
