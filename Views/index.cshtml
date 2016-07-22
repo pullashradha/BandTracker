@@ -3,5 +3,27 @@
   <link rel="stylesheet" href="/Content/css/styles.css" type="text/css">
 </head>
 <body>
-
+  <h1 class="page-header">The Band Tracker</h1>
+  <div class="row">
+    <div class="col-xs-6 all-bands">
+      <h2>Bands</h2>
+      @foreach (var band in Model)
+      {
+        <h3>@band.GetName()</h3>
+      }
+    </div>
+    <div class="col-xs-6 all-venues">
+      <h2>Venues</h2>
+      @foreach (var venue in Model)
+      {
+        <h3>@venue.GetName()</h3>
+      }
+    </div>
+  </div>
+  <form class="form-group" action="/" method="post">
+    <div class="row">
+      <button type="button" class="col-xs-6 btn btn-success">Add Band</button>
+      <button type="button" class="col-xs-6 btn btn-success">Add Venue</button>
+    </div>
+  </form>
 </body>
