@@ -38,20 +38,20 @@ No known bugs.
 
 The program should ... | Example Input | Example Output
 ----- | ----- | -----
-Create and add a new band to the database | --- | ---
-Update a band's information | --- | ---
-View a band | --- | ---
-View all bands | --- | ---
-View all venues a band has played at | --- | ---
-Delete one band | --- | ---
-Delete all bands | --- | ---
-Create and add a new venue to the database | --- | ---
-Update a venue's information | --- | ---
-View a venue | --- | ---
-View all venues | --- | ---
-View all bands that have played at a venue | --- | ---
-Delete one venue | --- | ---
-Delete all venues | --- | ---
+Create and add a new band to the database | Band: "One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com", add to database | Bands in Database: 1
+Update a band's information | Update One Ok Rock's description to: "The band is currently touring the US." | One Ok Rock: "The band is currently touring the US."
+View a band | View One Ok Rock | One Ok Rock: Genre-Pop/Rock, Description-Band from Japan, currently touring the US., Website-www.oneokrock.com
+View all bands | Bands: 1 | Bands: One Ok Rock
+View all venues a band has played at | One Ok Rock Venues: 1 | Crossroads MegaStadium, Seattle, Washington
+Delete one band | Bands: 1 | Bands: 0
+Delete all bands | Bands: 3 | Bands: 0
+Create and add a new venue to the database | Venue: "Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", "3/25/2020" | Venues in Database: 1
+Update a venue's information | Update Crossroads MegaStadium event date to: 4/25/2020 | CrossRoads MegaStadium: 4/25/2020
+View a venue | View Crossroads MegaStadium | CrossRoads MegaStadium: Address-101 SW Washington St., Seattle, Washington 97206, Phone Number- 555-555-5555, Website- www.crossroadstadium.com, Event Date- 3/25/2020
+View all venues | Venues: 1 | Venues: Crossroads MegaStadium
+View all bands that have played at a venue | Crossroad MegaStadium Bands: 1 | One Ok Rock, Pop/Rock
+Delete one venue | Venues: 1 | Venues: 0
+Delete all venues | Venues: 3 | Venues: 0
 
 ## Future Features
 
