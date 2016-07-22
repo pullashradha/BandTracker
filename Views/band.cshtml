@@ -9,9 +9,19 @@
   <h3>@Model.GetWebsite()</h3>
   <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/updated" method="post">
     <div class="row">
-      <button type="button" class="col-xs-6 btn btn-primary">Update Band</button>
-      <button type="button" class="col-xs-6 btn btn-danger" formaction="/bands/deleted">Delete Band</button>
+      <div class="col-xs-3">
+        <p>Name <input required type="text" name="update-band-name" class="form-control"></p>
+      </div>
+      <div class="col-xs-3">
+        <p>Music Genre <input required type="text" name="update-band-music-genre" class="form-control"></p>
+      </div>
     </div>
+    <p>Description <input required type="text" name="update-band-description" class="form-control"></p>
+    <p>Website <input required type="text" name="update-band-website" class="form-control"></p>
+    <button type="submit" class="btn btn-primary">Update Band</button>
+  </form>
+  <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/deleted" method="post">
+    <button type="button" class="btn btn-danger">Delete Band</button>
   </form>
   <h2>View All Venues This Band Has Played At</h2>
   <a href="/bands">Bands List</a>

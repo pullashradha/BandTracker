@@ -8,10 +8,34 @@
   <h3>@Model.GetPhoneNumber()</h3>
   <h3>@Model.GetStreetAddress() @Model.GetCity(), @Model.GetState() @Model.GetZipcode()</h3>
   <form class="form-group" action="/venues/@Model.GetId()/@Model.GetName()/updated" method="post">
+    <p>Name <input required type="text" name="update-venue-name" class="form-control"></p>
     <div class="row">
-      <button type="button" class="col-xs-6 btn btn-primary">Update Venue</button>
-      <button type="button" class="col-xs-6 btn btn-danger" formaction="/venues/deleted">Delete Venue</button>
+      <div class="col-xs-3">
+        <p>Street Address <input required type="text" name="update-venue-street-address" class="form-control"></p>
+      </div>
+      <div class="col-xs-3">
+        <p>City <input required type="text" name="update-venue-city" class="form-control"></p>
+      </div>
+      <div class="col-xs-3">
+        <p>State <input required type="text" name="update-venue-state" class="form-control"></p>
+      </div>
+      <div class="col-xs-3">
+        <p>Zipcode <input required type="text" name="update-venue-zipcode" class="form-control"></p>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <p>Phone Number <input required type="text" name="update-venue-phone-number" class="form-control"></p>
+      </div>
+      <div class="col-xs-6">
+        <p>Website <input required type="text" name="update-venue-website" class="form-control"></p>
+      </div>
+    </div>
+    <p>Event Date <input required type="datetime" name="update-venue-event-date" class="form-control"></p>
+    <button type="submit" class="btn btn-primary">Update Venue</button>
+  </form>
+  <form class="form-group" action="/venues/@Model.GetId()/@Model.GetName()/deleted" method="post">
+    <button type="button" class="btn btn-danger">Delete Venue</button>
   </form>
   <h2>View All Bands That Have Played At This Venue</h2>
   <a href="/venues">Venues List</a>
