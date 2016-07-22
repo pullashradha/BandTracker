@@ -1,0 +1,24 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/styles.css" type="text/css">
+</head>
+<body>
+  <h1 class="page-header">Bands</h1>
+  @if (Model.Count == 0)
+  {
+    <p>There are currently no bands in our records</p>
+  }
+  else
+  {
+    @foreach (var band in Model)
+    {
+      <h2>@band.GetName()</h2>
+    }
+  }
+  <form class="form-group" action="/bands/new" method="post">
+    <div class="row">
+      <button type="button" class="col-xs-6 btn btn-success">Add New Band</button>
+      <button type="button" class="col-xs-6 btn btn-danger" formaction="/bands/deleted">Delete All Bands</button>
+    </div>
+  </form>
+</body>

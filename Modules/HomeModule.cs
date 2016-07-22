@@ -6,9 +6,9 @@ namespace BandTracker
   {
     public HomeModule()
     {
-      Get ["/"] = _ => {
-        return View ["index.cshtml", Venue.GetAll()];
-      };
+      Get ["/"] = _ => View ["index.cshtml"];
+      Get ["/bands"] = _ => View ["bands.cshtml", Band.GetAll()];
+      Get ["/venues"] = _ => View ["venues.cshtml", Venue.GetAll()];
     }
   }
 }
