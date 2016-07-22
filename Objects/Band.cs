@@ -62,15 +62,11 @@ namespace BandTracker
         Band newBand = (Band) otherBand;
         bool idEquality = (this.GetId() == newBand.GetId());
         bool nameEquality = (this.GetName() == newBand.GetName());
-        bool streetAddressEquality = (this.GetStreetAddress() == newBand.GetStreetAddress());
-        bool cityEquality = (this.GetCity() == newBand.GetCity());
-        bool stateEquality = (this.GetState() == newBand.GetState());
-        bool zipcodeEquality = (this.GetZipcode() == newBand.GetZipcode());
-        bool phoneNumberEquality = (this.GetPhoneNumber() == newBand.GetPhoneNumber());
+        bool musicGenreEquality = (this.GetMusicGenre() == newBand.GetMusicGenre());
+        bool descriptionEquality = (this.GetDescription() == newBand.GetDescription());
         bool websiteEquality = (this.GetWebsite() == newBand.GetWebsite());
-        bool eventDateEquality = (this.GetEventDate() == newBand.GetEventDate());
 
-        return (idEquality && nameEquality && streetAddressEquality && cityEquality && stateEquality && zipcodeEquality && phoneNumberEquality && websiteEquality && eventDateEquality);
+        return (idEquality && nameEquality && musicGenreEquality && descriptionEquality && websiteEquality);
       }
       else
       {
@@ -89,14 +85,10 @@ namespace BandTracker
       {
         int bandId = rdr.GetInt32(0);
         string bandName = rdr.GetString(1);
-        string bandStreetAddress = rdr.GetString(2);
-        string bandCity = rdr.GetString(3);
-        string bandState = rdr.GetString(4);
-        string bandZipcode = rdr.GetString(5);
-        string bandPhoneNumber = rdr.GetString(6);
-        string bandWebsite = rdr.GetString(7);
-        DateTime bandEventDate = rdr.GetDateTime(8);
-        Band newBand = new Band (bandName, bandStreetAddress, bandCity, bandState, bandZipcode, bandPhoneNumber, bandWebsite, bandEventDate, bandId);
+        string bandMusicGenre = rdr.GetString(2);
+        string bandDescription = rdr.GetString(3);
+        string bandWebsite = rdr.GetString(4);
+        Band newBand = new Band (bandName, bandMusicGenre, bandDescription, bandWebsite, bandId);
         allBands.Add(newBand);
       }
       if (rdr != null)
