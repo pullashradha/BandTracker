@@ -53,9 +53,6 @@ View all bands that have played at a venue | --- | ---
 Delete one venue | --- | ---
 Delete all venues | --- | ---
 
-Band Information: Name, Type of Music, Description, Website
-Venue Information: Name, Event Date, Address, Phone Number, Website
-
 ## Future Features
 
 HTML | CSS | C#
