@@ -34,18 +34,18 @@ namespace BandTracker
       List<Band> resultList = Band.GetAll();
       Assert.Equal(testList, resultList);
     }
-    // [Fact]
-    // public void Test_AddVenue_SavesVenueToBand()
-    // {
-    //   Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
-    //   newBand.Save();
-    //   Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
-    //   newVenue.Save();
-    //   newBand.AddVenue(newVenue);
-    //   List<Venue> testVenueList = new List<Venue> {newVenue};
-    //   List<Venue> resultVenueList = newVenue.GetVenues();
-    //   Assert.Equals(testVenueList, resultVenueList);
-    // }
+    [Fact]
+    public void Test_AddVenue_SavesVenueToBand()
+    {
+      Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
+      newBand.Save();
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      newVenue.Save();
+      newBand.AddVenue(newVenue);
+      List<Venue> testVenueList = new List<Venue> {newVenue};
+      List<Venue> resultVenueList = newBand.GetVenues();
+      Assert.Equal(testVenueList, resultVenueList);
+    }
     [Fact]
     public void Test_Find_ReturnsBandById()
     {
@@ -79,6 +79,7 @@ namespace BandTracker
     public void Dispose()
     {
       Band.DeleteAll();
+      Venue.DeleteAll();
     }
   }
 }
