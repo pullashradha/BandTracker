@@ -14,8 +14,8 @@ namespace BandTracker
     private string _zipcode;
     private string _phoneNumber;
     private string _website;
-    private DateTime _eventDate;
-    public Venue (string Name, string StreetAddress, string City, string State, string Zipcode, string PhoneNumber, string Website, DateTime EventDate = default(DateTime), int Id = 0)
+    private DateTime? _eventDate;
+    public Venue (string Name, string StreetAddress, string City, string State, string Zipcode, string PhoneNumber, string Website, DateTime? EventDate, int Id = 0)
     {
       _id = Id;
       _name = Name;
@@ -87,11 +87,11 @@ namespace BandTracker
     {
       _website = newWebsite;
     }
-    public DateTime GetEventDate()
+    public DateTime? GetEventDate()
     {
       return _eventDate;
     }
-    public void SetEventDate (DateTime newEventDate)
+    public void SetEventDate (DateTime? newEventDate)
     {
       _eventDate = newEventDate;
     }
@@ -187,7 +187,7 @@ namespace BandTracker
         string venueZipcode = rdr.GetString(5);
         string venuePhoneNumber = rdr.GetString(6);
         string venueWebsite = rdr.GetString(7);
-        DateTime venueEventDate = rdr.GetDateTime(8);
+        DateTime? venueEventDate = rdr.GetDateTime(8);
         Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueEventDate, venueId);
         allVenues.Add(newVenue);
       }
@@ -274,7 +274,7 @@ namespace BandTracker
         string venueZipcode = rdr.GetString(5);
         string venuePhoneNumber = rdr.GetString(6);
         string venueWebsite = rdr.GetString(7);
-        DateTime venueEventDate = rdr.GetDateTime(8);
+        DateTime? venueEventDate = rdr.GetDateTime(8);
         Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueEventDate, venueId);
         allVenues.Add(newVenue);
       }

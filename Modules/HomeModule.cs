@@ -1,4 +1,5 @@
 using Nancy;
+using System.Collections.Generic;
 
 namespace BandTracker
 {
@@ -22,8 +23,12 @@ namespace BandTracker
         return View ["bands.cshtml", Band.GetAll()];
       };
       Get ["/bands/{id}/{name}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object> {};
         Band selectedBand = Band.Find(parameters.id);
-        return View ["band.cshtml", selectedBand];
+        List<Venue> allVenues = Venue.GetAll();
+        model.Add("selectedBand", selectedBand);
+        model.Add("allVenues", allVenues);
+        return View ["band.cshtml", model];
       };
       Post ["/bands/{id}/{name}/updated"] = parameters => {
         Band selectedBand = Band.Find(parameters.id);
@@ -77,8 +82,12 @@ namespace BandTracker
         return View ["venues.cshtml", Venue.GetAll()];
       };
       Get ["/venues/{id}/{name}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object> {};
         Venue selectedVenue = Venue.Find(parameters.id);
-        return View ["venue.cshtml", selectedVenue];
+        List<Band> allBands = Band.GetAll();
+        model.Add("selectedVenue", selectedVenue);
+        model.Add("allBands", allBands);
+        return View ["venue.cshtml", model];
       };
       Post ["/venues/{id}/{name}/updated"] = parameters => {
         Venue selectedVenue = Venue.Find(parameters.id);

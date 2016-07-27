@@ -3,12 +3,12 @@
   <link rel="stylesheet" href="/Content/css/single-styles.css" type="text/css">
 </head>
 <body>
-  <h1 class="page-header">@Model.GetName()</h1>
-  <h2>@Model.GetDescription()</h2>
-  <h3>Genre: @Model.GetMusicGenre()</h3>
-  <h3>@Model.GetWebsite()</h3>
+  <h1 class="page-header">@Model["selectedBand"].GetName()</h1>
+  <h2>@Model["selectedBand"].GetDescription()</h2>
+  <h3>Genre: @Model["selectedBand"].GetMusicGenre()</h3>
+  <h3>@Model["selectedBand"].GetWebsite()</h3>
   <h3>Update Band</h3>
-  <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/updated" method="post">
+  <form class="form-group" action="/bands/@Model['selectedBand'].GetId()/@Model['selectedBand'].GetName()/updated" method="post">
     <div class="row">
       <div class="col-xs-3">
         <p>Name <input required type="text" name="update-band-name" class="form-control"></p>
@@ -22,46 +22,25 @@
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
   <h2>View All Venues This Band Has Played At</h2>
-  @if (Model.GetVenues().Count == 0)
+  @if (Model["selectedBand"].GetVenues().Count == 0)
   {
     <h3>There are currently no venues in our records</h3>
   }
   else
   {
-    @foreach (var venue in Model.GetVenues())
+    @foreach (var venue in Model["selectedBand"].GetVenues())
     {
       <h2>@venue.GetName() on @venue.GetEventDate()</h2>
     }
   }
-  <h3>Add New Venue</h3>
-  <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/new" method="post">
-    <p>Name <input required type="text" name="venue-name" class="form-control"></p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>Street Address <input required type="text" name="venue-street-address" class="form-control"></p>
-      </div>
-      <div class="col-xs-3">
-        <p>City <input required type="text" name="venue-city" class="form-control"></p>
-      </div>
-      <div class="col-xs-3">
-        <p>State <input required type="text" name="venue-state" class="form-control"></p>
-      </div>
-      <div class="col-xs-3">
-        <p>Zipcode <input required type="text" name="venue-zipcode" class="form-control"></p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
-        <p>Phone Number <input required type="text" name="venue-phone-number" class="form-control"></p>
-      </div>
-      <div class="col-xs-6">
-        <p>Website <input required type="text" name="venue-website" class="form-control"></p>
-      </div>
-    </div>
-    <p>Event Date <input required type="datetime" name="venue-event-date" class="form-control"></p>
-    <button type="submit" class="btn btn-primary">Add</button>
-  </form>
-  <form class="form-group" action="/bands/@Model.GetId()/@Model.GetName()/deleted" method="post">
+  <h3>Add a Venue</h3>
+  <select class="form-control" name="venue-id">
+    @foreach (var venue in Model["allVenues"])
+    {
+      <option value=@venue.GetId()>@venue.GetName()</option>
+    }
+  </select>
+  <form class="form-group" action="/bands/@Model['selectedBand'].GetId()/@Model['selectedBand'].GetName()/deleted" method="post">
     <button type="submit" class="btn btn-danger">Delete Band</button>
   </form>
   <a href="/bands">Bands List</a>
