@@ -8,7 +8,7 @@
   <h3>Genre: @Model["selectedBand"].GetMusicGenre()</h3>
   <h3>@Model["selectedBand"].GetWebsite()</h3>
   <h3>Update Band</h3>
-  <form class="form-group" action="/bands/@Model['selectedBand'].GetId()/@Model['selectedBand'].GetName()/updated" method="post">
+  <form class="form-group" action='/bands/@Model["selectedBand"].GetId()/@Model["selectedBand"].GetName()/updated' method="post">
     <div class="row">
       <div class="col-xs-3">
         <p>Name <input required type="text" name="update-band-name" class="form-control"></p>
@@ -34,13 +34,16 @@
     }
   }
   <h3>Add a Venue</h3>
-  <select class="form-control" name="venue-id">
-    @foreach (var venue in Model["allVenues"])
-    {
-      <option value=@venue.GetId()>@venue.GetName()</option>
-    }
-  </select>
-  <form class="form-group" action="/bands/@Model['selectedBand'].GetId()/@Model['selectedBand'].GetName()/deleted" method="post">
+  <form class="form-group" action='/bands/@Model["selectedBand"].GetId()/@Model["selectedBand"].GetName()/new' method="post">
+    <select class="form-control" name="venue-id">
+      @foreach (var venue in Model["allVenues"])
+      {
+        <option value=@venue.GetId()>@venue.GetName()</option>
+      }
+    </select>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
+  <form class="form-group" action='/bands/@Model["selectedBand"].GetId()/@Model["selectedBand"].GetName()/deleted' method="post">
     <button type="submit" class="btn btn-danger">Delete Band</button>
   </form>
   <a href="/bands">Bands List</a>

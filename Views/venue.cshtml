@@ -8,7 +8,7 @@
   <h3>@Model["selectedVenue"].GetPhoneNumber()</h3>
   <h3>@Model["selectedVenue"].GetStreetAddress() @Model["selectedVenue"].GetCity(), @Model["selectedVenue"].GetState() @Model["selectedVenue"].GetZipcode()</h3>
   <h3>Update Venue</h3>
-  <form class="form-group" action="/venues/@Model['selectedVenue'].GetId()/@Model['selectedVenue'].GetName()/updated" method="post">
+  <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/updated' method="post">
     <p>Name <input required type="text" name="update-venue-name" class="form-control"></p>
     <div class="row">
       <div class="col-xs-3">
@@ -36,7 +36,7 @@
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
   <h2>View All Bands That Have Played At This Venue</h2>
-  @if (Model["selectedVenu"].GetBands().Count == 0)
+  @if (Model["selectedVenue"].GetBands().Count == 0)
   {
     <h3>There are currently no bands in our records</h3>
   }
@@ -48,13 +48,16 @@
     }
   }
   <h3>Add a Band</h3>
-  <select class="form-control" name="venue-id">
-    @foreach (var band in Model["allBands"])
-    {
-      <option value=@band.GetId()>@band.GetName()</option>
-    }
-  </select>
-  <form class="form-group" action="/venues/@Model['selectedVenue'].GetId()/@Model['selectedVenue'].GetName()/deleted" method="post">
+  <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/new' method="post">
+    <select class="form-control" name="band-id">
+      @foreach (var band in Model["allBands"])
+      {
+        <option value=@band.GetId()>@band.GetName()</option>
+      }
+    </select>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
+  <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/deleted' method="post">
     <button type="submit" class="btn btn-danger">Delete Venue</button>
   </form>
   <a href="/venues">Venues List</a>
