@@ -81,8 +81,9 @@ If SQL is not connected in the PowerShell, open SSMS and click the "New Query" b
 
 ## Known Bugs
 
-* When adding a new band on venue.cshtml, the event date/time cannot be entered in and will be a default value.
-* Can create duplicate entries of a band or venue that already exists.
+No known bugs.
+<!-- * When adding a new band on venue.cshtml, the event date/time cannot be entered in and will be a default value.
+* Can create duplicate entries of a band or venue that already exists. -->
 
 ## Specifications
 
@@ -102,14 +103,16 @@ View all venues | Venues: 1 | Venues: Crossroads MegaStadium
 View all bands that have played at a venue | Crossroad MegaStadium Bands: 1 | One Ok Rock, Pop/Rock
 Delete one venue | Venues: 1 | Venues: 0
 Delete all venues | Venues: 3 | Venues: 0
+Add a band to a venue | Crossroads MegaStadium, Bands: 0, add One Ok Rock | Bands: 1
+Add a venue to a band | One OK Rock, Venues: 0, add Crossroads MegaStadium | Venues: 1
 
 ## Future Features
 
 HTML | CSS | C#
 ----- | ----- | -----
-Add a better input form to set event date | --- | Add DateTime option to allow time input in a different field
+Add a better input form to set event date | --- | Change event date input field to the drop down when adding a venue/band to an existing band/venue
 Add drop down bar for existing venues & bands | --- | Allow user to add band to already existing venue & vice versa
---- | --- | Allow user to delete band from database but keep information of band in the venue page though it can't be altered, just to view past performers
+Have more confirmation pages | --- | Allow user to delete band from database but keep information of band in the venue page though it can't be altered, just to view past performers
 
 ## Support and Contact Details
 
