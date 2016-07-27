@@ -48,11 +48,11 @@
     }
   }
   <h3>Add a Band</h3>
-  <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/new' method="post">
+  <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/add_band' method="post">
     <select class="form-control" name="band-id">
       @foreach (var band in Model["allBands"])
       {
-        <option value=@band.GetId()>@band.GetName()</option>
+        <option value="@band.GetId()">@band.GetName()</option>
       }
     </select>
     <button type="submit" class="btn btn-success">Add</button>
