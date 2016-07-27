@@ -34,7 +34,8 @@
     }
   }
   <h3>Add a Venue</h3>
-  <form class="form-group" action='/bands/@Model["selectedBand"].GetId()/@Model["selectedBand"].GetName()/add_venue' method="post">
+  <form class="form-group" action="/bands/venue/new" method="post">
+    <input type="hidden" name="band-id" value='@Model["selectedBand"].GetId()'>
     <select class="form-control" name="venue-id">
       @foreach (var venue in Model["allVenues"])
       {

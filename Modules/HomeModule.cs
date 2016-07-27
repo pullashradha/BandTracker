@@ -39,11 +39,11 @@ namespace BandTracker
         selectedBand.Update();
         return View ["band.cshtml", selectedBand];
       };
-      Post ["/bands/{id}/{name}/add_venue"] = parameters => {
-        Band selectedBand = Band.Find(parameters.id);
+      Post ["/bands/venue/new"] = _ => {
+        Band selectedBand = Band.Find(Request.Form ["band-id"]);
         Venue newVenue = Venue.Find(Request.Form ["venue-id"]);
         selectedBand.AddVenue(newVenue);
-        return View ["band.cshtml", selectedBand];
+        return View ["confirmation.cshtml"];
       };
       Post ["/bands/{id}/{name}/deleted"] = parameters => {
         Band selectedBand = Band.Find(parameters.id);
@@ -91,11 +91,11 @@ namespace BandTracker
         selectedVenue.Update();
         return View ["venue.cshtml", selectedVenue];
       };
-      Post ["/venues/{id}/{name}/add_band"] = parameters => {
-        Venue selectedVenue = Venue.Find(parameters.id);
+      Post ["/venues/band/new"] = _ => {
+        Venue selectedVenue = Venue.Find(Request.Form ["venue-id"]);
         Band newBand = Band.Find(Request.Form ["band-id"]);
         selectedVenue.AddBand(newBand);
-        return View ["venue.cshtml", selectedVenue];
+        return View ["confirmation.cshtml"];
       };
       Post ["/venues/{id}/{name}/deleted"] = parameters => {
         Venue selectedVenue = Venue.Find(parameters.id);
