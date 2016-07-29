@@ -208,9 +208,9 @@ namespace BandTracker
         conn.Close();
       }
     }
-    public List<Band> GetBands()
+    public Dictionary<Band, DateTime> GetBands()
     {
-      List<Band> allBands = new List<Band> {};
+      Dictionary<Band, DateTime> allBands = new Dictionary<Band, DateTime> {};
       SqlConnection conn = DB.Connection();
       conn.Open();
       SqlDataReader rdr;
@@ -227,8 +227,9 @@ namespace BandTracker
         string bandMusicGenre = rdr.GetString(2);
         string bandDescription = rdr.GetString(3);
         string bandWebsite = rdr.GetString(4);
+        DateTime bandEventDate = default(DateTime);
         Band newBand = new Band (bandName, bandMusicGenre, bandDescription, bandWebsite, bandId);
-        allBands.Add(newBand);
+        allBands.Add(newBand, bandEventDate);
       }
       if (rdr != null)
       {

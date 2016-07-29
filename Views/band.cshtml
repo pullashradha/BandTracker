@@ -30,7 +30,7 @@
   {
     @foreach (var venue in Model["selectedBand"].GetVenues())
     {
-      <h2>@venue.GetName()</h2>
+      <h2>@venue.GetName() on </h2>
     }
   }
   <h3>Add a Venue</h3>
@@ -42,7 +42,7 @@
         <option value="@venue.GetId()">@venue.GetName()</option>
       }
     </select>
-    <p>Event Date <input required type="date" name="event-date" class="form-control"></p>
+    <p>Event Date <input required type="date" name="event-date" class="form-control" value="event-date"></p>
     <button type="submit" class="btn btn-success">Add</button>
   </form>
   <a href="/venues">Add a New Venue</a>

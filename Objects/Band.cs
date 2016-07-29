@@ -160,9 +160,9 @@ namespace BandTracker
         conn.Close();
       }
     }
-    public List<Venue> GetVenues()
+    public Dictionary<Venue, DateTime> GetVenues()
     {
-      List<Venue> allVenues = new List<Venue> {};
+      Dictionary<Venue, DateTime> allVenues = new Dictionary<Venue, DateTime> {};
       SqlConnection conn = DB.Connection();
       conn.Open();
       SqlDataReader rdr;
@@ -182,8 +182,9 @@ namespace BandTracker
         string venueZipcode = rdr.GetString(5);
         string venuePhoneNumber = rdr.GetString(6);
         string venueWebsite = rdr.GetString(7);
+        DateTime venueEventDate = default(DateTime);
         Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueId);
-        allVenues.Add(newVenue);
+        allVenues.Add(newVenue, venueEventDate);
       }
       if (rdr != null)
       {

@@ -42,9 +42,9 @@ namespace BandTracker
       Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
       newBand.Save();
       newVenue.AddBand(newBand, new DateTime(2020, 7, 25));
-      List<Band> testBandList = new List<Band> {newBand};
-      List<Band> resultBandList = newVenue.GetBands();
-      Assert.Equal(testBandList, resultBandList);
+      Dictionary<Band, DateTime> testBandDictionary = new Dictionary<Band, DateTime> {{newBand, new DateTime(2020, 7, 25)}};
+      Dictionary<Band, DateTime> resultBandDictionary = newVenue.GetBands();
+      Assert.Equal(testBandDictionary, resultBandDictionary);
     }
     [Fact]
     public void Test_Find_ReturnsVenueById()

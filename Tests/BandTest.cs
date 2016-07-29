@@ -42,9 +42,9 @@ namespace BandTracker
       Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       newVenue.Save();
       newBand.AddVenue(newVenue, new DateTime(2020, 7, 25));
-      List<Venue> testVenueList = new List<Venue> {newVenue};
-      List<Venue> resultVenueList = newBand.GetVenues();
-      Assert.Equal(testVenueList, resultVenueList);
+      Dictionary<Venue, DateTime> testVenueDictionary = new Dictionary<Venue, DateTime> {{newVenue, new DateTime(2020, 7, 25)}};
+      Dictionary<Venue, DateTime> resultVenueDictionary = newBand.GetVenues();
+      Assert.Equal(testVenueDictionary, resultVenueDictionary);
     }
     [Fact]
     public void Test_Find_ReturnsBandById()
