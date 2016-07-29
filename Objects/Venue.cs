@@ -185,19 +185,23 @@ namespace BandTracker
       }
       return allVenues;
     }
-    public void AddBand (Band newBand)
+    public void AddBand (Band newBand, DateTime? newEventDate)
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
-      SqlCommand cmd = new SqlCommand ("INSERT INTO bands_venues (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
+      SqlCommand cmd = new SqlCommand ("INSERT INTO bands_venues (band_id, venue_id, event_date) VALUES (@BandId, @VenueId, @EventDate);", conn);
       SqlParameter bandIdParameter = new SqlParameter();
       bandIdParameter.ParameterName = "@BandId";
       bandIdParameter.Value = newBand.GetId();
       SqlParameter venueIdParameter = new SqlParameter();
       venueIdParameter.ParameterName = "@VenueId";
       venueIdParameter.Value = this.GetId();
+      SqlParameter eventDateParameter = new SqlParameter();
+      eventDateParameter.ParameterName = "@EventDate";
+      eventDateParameter.Value = newEventDate;
       cmd.Parameters.Add(bandIdParameter);
       cmd.Parameters.Add(venueIdParameter);
+      cmd.Parameters.Add(eventDateParameter);
       cmd.ExecuteNonQuery();
       if (conn != null )
       {

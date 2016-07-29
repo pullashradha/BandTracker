@@ -41,12 +41,8 @@ namespace BandTracker
       };
       Post ["/bands/new_venue"] = _ => {
         Band selectedBand = Band.Find(Request.Form ["band-id"]);
-        Venue newVenue = Venue.Find
-        (
-          Request.Form ["venue-id"],
-          Request.Form ["event-date"]
-        );
-        selectedBand.AddVenue(newVenue);
+        Venue newVenue = Venue.Find(Request.Form ["venue-id"]);
+        selectedBand.AddVenue(newVenue, Request.Form ["event-date"]);
         return View ["confirmation.cshtml"];
       };
       Post ["/bands/{id}/{name}/deleted"] = parameters => {
@@ -95,12 +91,8 @@ namespace BandTracker
       };
       Post ["/venues/new_band"] = _ => {
         Venue selectedVenue = Venue.Find(Request.Form ["venue-id"]);
-        Band newBand = Band.Find
-        (
-          Request.Form ["band-id"],
-          Request.Form ["event-date"]
-        );
-        selectedVenue.AddBand(newBand);
+        Band newBand = Band.Find(Request.Form ["band-id"]);
+        selectedVenue.AddBand(newBand, Request.Form ["event-date"]);
         return View ["confirmation.cshtml"];
       };
       Post ["/venues/{id}/{name}/deleted"] = parameters => {

@@ -41,7 +41,7 @@ namespace BandTracker
       newVenue.Save();
       Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
       newBand.Save();
-      newVenue.AddBand(newBand);
+      newVenue.AddBand(newBand, new DateTime(2020, 7, 25));
       List<Band> testBandList = new List<Band> {newBand};
       List<Band> resultBandList = newVenue.GetBands();
       Assert.Equal(testBandList, resultBandList);

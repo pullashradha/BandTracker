@@ -39,9 +39,9 @@ namespace BandTracker
     {
       Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
       newBand.Save();
-      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       newVenue.Save();
-      newBand.AddVenue(newVenue);
+      newBand.AddVenue(newVenue, new DateTime(2020, 7, 25));
       List<Venue> testVenueList = new List<Venue> {newVenue};
       List<Venue> resultVenueList = newBand.GetVenues();
       Assert.Equal(testVenueList, resultVenueList);
