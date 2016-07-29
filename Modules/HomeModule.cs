@@ -39,9 +39,13 @@ namespace BandTracker
         selectedBand.Update();
         return View ["band.cshtml", selectedBand];
       };
-      Post ["/bands/venue/new"] = _ => {
+      Post ["/bands/new_venue"] = _ => {
         Band selectedBand = Band.Find(Request.Form ["band-id"]);
-        Venue newVenue = Venue.Find(Request.Form ["venue-id"]);
+        Venue newVenue = Venue.Find
+        (
+          Request.Form ["venue-id"],
+          Request.Form ["event-date"]
+        );
         selectedBand.AddVenue(newVenue);
         return View ["confirmation.cshtml"];
       };
@@ -64,8 +68,7 @@ namespace BandTracker
           Request.Form ["venue-state"],
           Request.Form ["venue-zipcode"],
           Request.Form ["venue-phone-number"],
-          Request.Form ["venue-website"],
-          Request.Form ["venue-event-date"]
+          Request.Form ["venue-website"]
         );
         newVenue.Save();
         return View ["venues.cshtml", Venue.GetAll()];
@@ -87,13 +90,16 @@ namespace BandTracker
         selectedVenue.SetZipcode(Request.Form ["update-venue-zipcode"]);
         selectedVenue.SetPhoneNumber(Request.Form ["update-venue-phone-number"]);
         selectedVenue.SetWebsite(Request.Form ["update-venue-website"]);
-        selectedVenue.SetEventDate(Request.Form ["update-venue-event-date"]);
         selectedVenue.Update();
         return View ["venue.cshtml", selectedVenue];
       };
-      Post ["/venues/band/new"] = _ => {
+      Post ["/venues/new_band"] = _ => {
         Venue selectedVenue = Venue.Find(Request.Form ["venue-id"]);
-        Band newBand = Band.Find(Request.Form ["band-id"]);
+        Band newBand = Band.Find
+        (
+          Request.Form ["band-id"],
+          Request.Form ["event-date"]
+        );
         selectedVenue.AddBand(newBand);
         return View ["confirmation.cshtml"];
       };

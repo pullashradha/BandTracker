@@ -34,7 +34,7 @@
     }
   }
   <h3>Add a Venue</h3>
-  <form class="form-group" action="/bands/venue/new" method="post">
+  <form class="form-group" action="/bands/new_venue" method="post">
     <input type="hidden" name="band-id" value='@Model["selectedBand"].GetId()'>
     <select class="form-control" name="venue-id">
       @foreach (var venue in Model["allVenues"])
@@ -42,6 +42,7 @@
         <option value="@venue.GetId()">@venue.GetName()</option>
       }
     </select>
+    <p>Event Date <input required type="datetime" name="update-venue-event-date" class="form-control"></p>
     <button type="submit" class="btn btn-success">Add</button>
   </form>
   <a href="/venues">Add a New Venue</a>

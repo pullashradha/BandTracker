@@ -14,8 +14,7 @@ namespace BandTracker
     private string _zipcode;
     private string _phoneNumber;
     private string _website;
-    private DateTime? _eventDate;
-    public Venue (string Name, string StreetAddress, string City, string State, string Zipcode, string PhoneNumber, string Website, DateTime? EventDate, int Id = 0)
+    public Venue (string Name, string StreetAddress, string City, string State, string Zipcode, string PhoneNumber, string Website, int Id = 0)
     {
       _id = Id;
       _name = Name;
@@ -25,7 +24,6 @@ namespace BandTracker
       _zipcode = Zipcode;
       _phoneNumber = PhoneNumber;
       _website = Website;
-      _eventDate = EventDate;
     }
     public int GetId()
     {
@@ -87,14 +85,6 @@ namespace BandTracker
     {
       _website = newWebsite;
     }
-    public DateTime? GetEventDate()
-    {
-      return _eventDate;
-    }
-    public void SetEventDate (DateTime? newEventDate)
-    {
-      _eventDate = newEventDate;
-    }
     public override bool Equals (System.Object otherVenue)
     {
       if (otherVenue is Venue)
@@ -108,9 +98,8 @@ namespace BandTracker
         bool zipcodeEquality = (this.GetZipcode() == newVenue.GetZipcode());
         bool phoneNumberEquality = (this.GetPhoneNumber() == newVenue.GetPhoneNumber());
         bool websiteEquality = (this.GetWebsite() == newVenue.GetWebsite());
-        bool eventDateEquality = (this.GetEventDate() == newVenue.GetEventDate());
 
-        return (idEquality && nameEquality && streetAddressEquality && cityEquality && stateEquality && zipcodeEquality && phoneNumberEquality && websiteEquality && eventDateEquality);
+        return (idEquality && nameEquality && streetAddressEquality && cityEquality && stateEquality && zipcodeEquality && phoneNumberEquality && websiteEquality);
       }
       else
       {
@@ -122,7 +111,7 @@ namespace BandTracker
       SqlConnection conn = DB.Connection();
       conn.Open();
       SqlDataReader rdr;
-      SqlCommand cmd = new SqlCommand ("INSERT INTO venues (name, street_address, city_address, state_address, zipcode, phone_number, website, event_date) OUTPUT INSERTED.id VALUES (@VenueName, @VenueStreetAddress, @VenueCity, @VenueState, @VenueZipcode, @VenuePhoneNumber, @VenueWebsite, @VenueEventDate);", conn);
+      SqlCommand cmd = new SqlCommand ("INSERT INTO venues (name, street_address, city_address, state_address, zipcode, phone_number, website) OUTPUT INSERTED.id VALUES (@VenueName, @VenueStreetAddress, @VenueCity, @VenueState, @VenueZipcode, @VenuePhoneNumber, @VenueWebsite);", conn);
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@VenueName";
       nameParameter.Value = this.GetName();
@@ -144,9 +133,6 @@ namespace BandTracker
       SqlParameter websiteParameter = new SqlParameter();
       websiteParameter.ParameterName = "@VenueWebsite";
       websiteParameter.Value = this.GetWebsite();
-      SqlParameter eventDateParameter = new SqlParameter();
-      eventDateParameter.ParameterName = "@VenueEventDate";
-      eventDateParameter.Value = this.GetEventDate();
       cmd.Parameters.Add(nameParameter);
       cmd.Parameters.Add(streetAddressParameter);
       cmd.Parameters.Add(cityParameter);
@@ -154,7 +140,6 @@ namespace BandTracker
       cmd.Parameters.Add(zipcodeParameter);
       cmd.Parameters.Add(phoneNumberParameter);
       cmd.Parameters.Add(websiteParameter);
-      cmd.Parameters.Add(eventDateParameter);
       rdr = cmd.ExecuteReader();
       while (rdr.Read())
       {
@@ -187,8 +172,7 @@ namespace BandTracker
         string venueZipcode = rdr.GetString(5);
         string venuePhoneNumber = rdr.GetString(6);
         string venueWebsite = rdr.GetString(7);
-        DateTime? venueEventDate = rdr.GetDateTime(8);
-        Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueEventDate, venueId);
+        Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueId);
         allVenues.Add(newVenue);
       }
       if (rdr != null)
@@ -274,8 +258,7 @@ namespace BandTracker
         string venueZipcode = rdr.GetString(5);
         string venuePhoneNumber = rdr.GetString(6);
         string venueWebsite = rdr.GetString(7);
-        DateTime? venueEventDate = rdr.GetDateTime(8);
-        Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueEventDate, venueId);
+        Venue newVenue = new Venue (venueName, venueStreetAddress, venueCity, venueState, venueZipcode, venuePhoneNumber, venueWebsite, venueId);
         allVenues.Add(newVenue);
       }
       if (rdr != null)
@@ -293,7 +276,7 @@ namespace BandTracker
       SqlConnection conn = DB.Connection();
       conn.Open();
       SqlDataReader rdr;
-      SqlCommand cmd = new SqlCommand ("UPDATE venues SET name = @NewVenueName, street_address = @NewVenueStreetAddress, city_address = @NewVenueCity, state_address = @NewVenueState, zipcode = @NewVenueZipcode, phone_number = @NewVenuePhoneNumber, website = @NewVenueWebsite, event_date = @NewVenueEventDate WHERE id = @VenueId;", conn);
+      SqlCommand cmd = new SqlCommand ("UPDATE venues SET name = @NewVenueName, street_address = @NewVenueStreetAddress, city_address = @NewVenueCity, state_address = @NewVenueState, zipcode = @NewVenueZipcode, phone_number = @NewVenuePhoneNumber, website = @NewVenueWebsite WHERE id = @VenueId;", conn);
       SqlParameter newNameParameter = new SqlParameter();
       newNameParameter.ParameterName = "@NewVenueName";
       newNameParameter.Value = this.GetName();
@@ -315,9 +298,7 @@ namespace BandTracker
       SqlParameter newWebsiteParameter = new SqlParameter();
       newWebsiteParameter.ParameterName = "@NewVenueWebsite";
       newWebsiteParameter.Value = this.GetWebsite();
-      SqlParameter newEventDateParameter = new SqlParameter();
-      newEventDateParameter.ParameterName = "@NewVenueEventDate";
-      newEventDateParameter.Value = this.GetEventDate();
+
       SqlParameter idParameter = new SqlParameter();
       idParameter.ParameterName = "@VenueId";
       idParameter.Value = this.GetId();
@@ -328,7 +309,6 @@ namespace BandTracker
       cmd.Parameters.Add(newZipcodeParameter);
       cmd.Parameters.Add(newPhoneNumberParameter);
       cmd.Parameters.Add(newWebsiteParameter);
-      cmd.Parameters.Add(newEventDateParameter);
       cmd.Parameters.Add(idParameter);
       rdr = cmd.ExecuteReader();
       while (rdr.Read())

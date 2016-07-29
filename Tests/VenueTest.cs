@@ -21,14 +21,14 @@ namespace BandTracker
     [Fact]
     public void Test_Equals_EntriesMatch()
     {
-      Venue firstVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
-      Venue secondVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue firstVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
+      Venue secondVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       Assert.Equal(firstVenue, secondVenue);
     }
     [Fact]
     public void Test_Save_SavesVenueToDatabase()
     {
-      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       newVenue.Save();
       List<Venue> testList = new List<Venue> {newVenue};
       List<Venue> resultList = Venue.GetAll();
@@ -37,7 +37,7 @@ namespace BandTracker
     [Fact]
     public void Test_AddBand_SavesBandToVenue()
     {
-      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       newVenue.Save();
       Band newBand = new Band ("One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com");
       newBand.Save();
@@ -49,7 +49,7 @@ namespace BandTracker
     [Fact]
     public void Test_Find_ReturnsVenueById()
     {
-      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       newVenue.Save();
       Venue foundVenue = Venue.Find(newVenue.GetId());
       Assert.Equal(newVenue, foundVenue);
@@ -57,18 +57,18 @@ namespace BandTracker
     [Fact]
     public void Test_Update_UpdatesVenueInformation()
     {
-      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue newVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       newVenue.Save();
-      newVenue.SetEventDate(new DateTime (2020, 4, 25));
+      newVenue.SetPhoneNumber("360-555-5555");
       newVenue.Update();
       Venue updatedVenue = Venue.Find(newVenue.GetId());
-      Assert.Equal(newVenue.GetEventDate(), updatedVenue.GetEventDate());
+      Assert.Equal(newVenue.GetPhoneNumber(), updatedVenue.GetPhoneNumber());
     }
     [Fact]
     public void Test_DeleteOne_DeletesOneVenue()
     {
-      Venue firstVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
-      Venue secondVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com", new DateTime(2020, 3, 25));
+      Venue firstVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
+      Venue secondVenue = new Venue ("Crossroads MegaStadium", "101 SW Washington St.", "Seattle", "Washington", "97206", "555-555-5555", "www.crossroadsstadium.com");
       firstVenue.Save();
       secondVenue.Save();
       List<Venue> testList = new List<Venue> {secondVenue};
