@@ -137,7 +137,7 @@ namespace BandTracker
       }
       return allBands;
     }
-    public void AddVenue (Venue newVenue, DateTime? newEventDate)
+    public void AddVenue (Venue newVenue, DateTime newEventDate)
     {
       SqlConnection conn = DB.Connection();
       conn.Open();

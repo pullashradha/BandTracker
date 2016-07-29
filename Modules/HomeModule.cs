@@ -1,4 +1,5 @@
 using Nancy;
+using System;
 using System.Collections.Generic;
 
 namespace BandTracker
@@ -42,7 +43,9 @@ namespace BandTracker
       Post ["/bands/new_venue"] = _ => {
         Band selectedBand = Band.Find(Request.Form ["band-id"]);
         Venue newVenue = Venue.Find(Request.Form ["venue-id"]);
-        selectedBand.AddVenue(newVenue, Request.Form ["event-date"]);
+        DateTime date = Request.Form ["event-date"];
+        DateTime newEventDate = Convert.ToDateTime(date);
+        selectedBand.AddVenue(newVenue, newEventDate);
         return View ["confirmation.cshtml"];
       };
       Post ["/bands/{id}/{name}/deleted"] = parameters => {
@@ -92,7 +95,9 @@ namespace BandTracker
       Post ["/venues/new_band"] = _ => {
         Venue selectedVenue = Venue.Find(Request.Form ["venue-id"]);
         Band newBand = Band.Find(Request.Form ["band-id"]);
-        selectedVenue.AddBand(newBand, Request.Form ["event-date"]);
+        DateTime date = Request.Form ["event-date"];
+        DateTime newEventDate = Convert.ToDateTime(date);
+        selectedVenue.AddBand(newBand, newEventDate);
         return View ["confirmation.cshtml"];
       };
       Post ["/venues/{id}/{name}/deleted"] = parameters => {

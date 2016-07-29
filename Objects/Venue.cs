@@ -185,7 +185,7 @@ namespace BandTracker
       }
       return allVenues;
     }
-    public void AddBand (Band newBand, DateTime? newEventDate)
+    public void AddBand (Band newBand, DateTime newEventDate)
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
