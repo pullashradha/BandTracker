@@ -1,4 +1,4 @@
-# Band Tracker Webpage
+# Band Tracker
 
 #### Advanced Databases Independent Project for Epicodus, 07/22/2016
 
@@ -85,7 +85,7 @@ If SQL is not connected in the PowerShell, open SSMS and click the "New Query" b
 
 ## Specifications
 
-The program should ... | Example Input | Example Output
+The program should... | Example Input | Example Output
 ----- | ----- | -----
 Create and add a new band to the database | Band: "One Ok Rock", "Pop/Rock", "Band from Japan, currently touring the US.", "www.oneokrock.com", add to database | Bands in Database: 1
 Update a band's information | Update One Ok Rock's description to: "The band is currently touring the US." | One Ok Rock: "The band is currently touring the US."
