@@ -51,14 +51,18 @@
   <h3 class="h3-header">Add a Band</h3>
   <form class="form-group" action="/venues/new_band" method="post">
     <input type="hidden" name="venue-id" value='@Model["selectedVenue"].GetId()'>
-    <select class="form-control" name="band-id">
-      @foreach (var band in Model["allBands"])
-      {
-        <option value="@band.GetId()">@band.GetName()</option>
-      }
-    </select>
-    <p>Event Date<input required type="date" name="event-date" class="form-control"></p>
-    <button type="submit" class="btn btn-success">Add</button>
+    <div class="row">
+      <p class="col-xs-6">Band Name
+        <select class="form-control" name="band-id">
+        @foreach (var band in Model["allBands"])
+        {
+          <option value="@band.GetId()">@band.GetName()</option>
+        }
+        </select>
+      </p>
+      <p class="col-xs-6">Event Date<input required type="date" name="event-date" class="form-control"></p>
+    </div>
+    <button type="submit" class="btn btn-success">Add Band</button>
   </form>
   <h2 class="page-link"><a href="/bands">Create a New Band</a></h2>
   <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/deleted' method="post">

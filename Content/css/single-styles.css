@@ -41,6 +41,10 @@ form p {
   font-size: 15pt;
 }
 
+.select {
+  margin-top: 10px;
+}
+
 .btn-primary, .btn-success, .btn-danger {
   font-size: 15pt;
   margin-top: 15px;
