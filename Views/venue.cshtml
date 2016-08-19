@@ -4,40 +4,42 @@
 </head>
 <body>
   <h1 class="page-header">@Model["selectedVenue"].GetName()</h1>
-  <h2>@Model["selectedVenue"].GetWebsite()</h2>
-  <h3>@Model["selectedVenue"].GetPhoneNumber()</h3>
-  <h3>@Model["selectedVenue"].GetStreetAddress() @Model["selectedVenue"].GetCity(), @Model["selectedVenue"].GetState() @Model["selectedVenue"].GetZipcode()</h3>
-  <h3>Update Venue</h3>
+  <div class="contact-row row">
+    <h2 class="contact-info col-xs-3 col-xs-offset-1">@Model["selectedVenue"].GetWebsite()</h2>
+    <h2 class="contact-info col-xs-3">@Model["selectedVenue"].GetPhoneNumber()</h2>
+    <h2 class="contact-info col-xs-3">@Model["selectedVenue"].GetStreetAddress() @Model["selectedVenue"].GetCity(), @Model["selectedVenue"].GetState() @Model["selectedVenue"].GetZipcode()</h2>
+  </div>
+  <h3 class="h3-header">Update Venue</h3>
   <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/updated' method="post">
-    <p>Name <input required type="text" name="update-venue-name" class="form-control"></p>
+    <p>Name<input required type="text" name="update-venue-name" class="form-control"></p>
     <div class="row">
       <div class="col-xs-3">
-        <p>Street Address <input required type="text" name="update-venue-street-address" class="form-control"></p>
+        <p>Street Address<input required type="text" name="update-venue-street-address" class="form-control"></p>
       </div>
       <div class="col-xs-3">
-        <p>City <input required type="text" name="update-venue-city" class="form-control"></p>
+        <p>City<input required type="text" name="update-venue-city" class="form-control"></p>
       </div>
       <div class="col-xs-3">
-        <p>State <input required type="text" name="update-venue-state" class="form-control"></p>
+        <p>State<input required type="text" name="update-venue-state" class="form-control"></p>
       </div>
       <div class="col-xs-3">
-        <p>Zipcode <input required type="text" name="update-venue-zipcode" class="form-control"></p>
+        <p>Zipcode<input required type="text" name="update-venue-zipcode" class="form-control"></p>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-6">
-        <p>Phone Number <input required type="text" name="update-venue-phone-number" class="form-control"></p>
+        <p>Phone Number<input required type="text" name="update-venue-phone-number" class="form-control"></p>
       </div>
       <div class="col-xs-6">
-        <p>Website <input required type="text" name="update-venue-website" class="form-control"></p>
+        <p>Website<input required type="text" name="update-venue-website" class="form-control"></p>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary">Update Venue</button>
   </form>
-  <h2>View All Bands That Have Played At This Venue</h2>
+  <h2 class="list-header">View All Bands That Have Played At This Venue</h2>
   @if (Model["selectedVenue"].GetBands().Count == 0)
   {
-    <h3>There are currently no bands in our records</h3>
+    <h3 class="list">There are currently no bands in our records</h3>
   }
   else
   {
@@ -46,7 +48,7 @@
       <h2>@band.GetName() on </h2>
     }
   }
-  <h3>Add a Band</h3>
+  <h3 class="h3-header">Add a Band</h3>
   <form class="form-group" action="/venues/new_band" method="post">
     <input type="hidden" name="venue-id" value='@Model["selectedVenue"].GetId()'>
     <select class="form-control" name="band-id">
@@ -55,13 +57,13 @@
         <option value="@band.GetId()">@band.GetName()</option>
       }
     </select>
-    <p>Event Date <input required type="date" name="event-date" class="form-control"></p>
+    <p>Event Date<input required type="date" name="event-date" class="form-control"></p>
     <button type="submit" class="btn btn-success">Add</button>
   </form>
-  <a href="/bands">Add a New Band</a>
+  <h2 class="page-link"><a href="/bands">Create a New Band</a></h2>
   <form class="form-group" action='/venues/@Model["selectedVenue"].GetId()/@Model["selectedVenue"].GetName()/deleted' method="post">
     <button type="submit" class="btn btn-danger">Delete Venue</button>
   </form>
-  <a href="/venues">Venues List</a>
-  <a href="/">Home</a>
+  <h2 class="page-link"><a href="/venues">Venues List</a></h2>
+  <h2 class="page-link home-link"><a href="/">Home</a></h2>
 </body>

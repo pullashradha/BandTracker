@@ -12,38 +12,38 @@
   {
     @foreach (var venue in Model)
     {
-      <a href="/venues/@venue.GetId()/@venue.GetName()"><h2>@venue.GetName()</h2></a>
+      <h2 class="names-list"><a href="/venues/@venue.GetId()/@venue.GetName()">@venue.GetName()</a></h2>
     }
   }
-  <h3>Add New Venue</h3>
+  <h3 class="add-new">Add New Venue</h3>
   <form class="form-group" action="/venues/new" method="post">
-    <p>Name <input required type="text" name="venue-name" class="form-control"></p>
+    <p>Name<input required type="text" name="venue-name" class="form-control"></p>
     <div class="row">
       <div class="col-xs-3">
-        <p>Street Address <input required type="text" name="venue-street-address" class="form-control"></p>
+        <p>Street Address<input required type="text" name="venue-street-address" class="form-control"></p>
       </div>
       <div class="col-xs-3">
-        <p>City <input required type="text" name="venue-city" class="form-control"></p>
+        <p>City<input required type="text" name="venue-city" class="form-control"></p>
       </div>
       <div class="col-xs-3">
-        <p>State <input required type="text" name="venue-state" class="form-control"></p>
+        <p>State<input required type="text" name="venue-state" class="form-control"></p>
       </div>
       <div class="col-xs-3">
-        <p>Zipcode <input required type="text" name="venue-zipcode" class="form-control"></p>
+        <p>Zipcode<input required type="text" name="venue-zipcode" class="form-control"></p>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-6">
-        <p>Phone Number <input required type="text" name="venue-phone-number" class="form-control"></p>
+        <p>Phone Number<input required type="text" name="venue-phone-number" class="form-control"></p>
       </div>
       <div class="col-xs-6">
-        <p>Website <input required type="text" name="venue-website" class="form-control"></p>
+        <p>Website<input required type="text" name="venue-website" class="form-control"></p>
       </div>
     </div>
-    <button type="submit" class="btn btn-success">Add</button>
+    <button type="submit" class="btn btn-success">Add New Venue</button>
   </form>
   <form class="form-group" action="/venues/deleted" method="post">
     <button type="submit" class="btn btn-danger">Delete All Venues</button>
   </form>
-  <a href="/">Home</a>
+  <h2 class="home-link"><a href="/">Home</a></h2>
 </body>

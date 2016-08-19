@@ -12,25 +12,25 @@
   {
     @foreach (var band in Model)
     {
-      <a href="/bands/@band.GetId()/@band.GetName()"><h2>@band.GetName()</h2></a>
+      <h2 class="names-list"><a href="/bands/@band.GetId()/@band.GetName()">@band.GetName()</a></h2>
     }
   }
-  <h3>Add New Band</h3>
+  <h3 class="add-new">Add New Band</h3>
   <form class="form-group" action="/bands/new" method="post">
     <div class="row">
-      <div class="col-xs-3">
-        <p>Name <input required type="text" name="band-name" class="form-control"></p>
+      <div class="col-xs-6">
+        <p>Name<input required type="text" name="band-name" class="form-control"></p>
       </div>
-      <div class="col-xs-3">
-        <p>Music Genre <input required type="text" name="band-music-genre" class="form-control"></p>
+      <div class="col-xs-6">
+        <p>Music Genre<input required type="text" name="band-music-genre" class="form-control"></p>
       </div>
     </div>
-    <p>Description <input required type="text" name="band-description" class="form-control"></p>
-    <p>Website <input required type="text" name="band-website" class="form-control"></p>
-    <button type="submit" class="btn btn-success">Add</button>
+    <p>Description<input required type="text" name="band-description" class="form-control"></p>
+    <p>Website<input required type="text" name="band-website" class="form-control"></p>
+    <button type="submit" class="btn btn-success">Add New Band</button>
   </form>
   <form class="form-group" action="/bands/deleted" method="post">
     <button type="submit" class="btn btn-danger">Delete All Bands</button>
   </form>
-  <a href="/">Home</a>
+  <h2 class="home-link"><a href="/">Home</a></h2>
 </body>

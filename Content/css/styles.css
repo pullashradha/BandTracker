@@ -3,3 +3,14 @@ body {
   color: #000000;
   background-color: #FFFFFF;
 }
+
+.page-header {
+  text-align: center;
+  font-size: 40pt;
+}
+
+h2 {
+  text-align: center;
+  font-size: 30pt;
+  margin-top: 50px;
+}
