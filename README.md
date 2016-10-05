@@ -82,6 +82,7 @@ If SQL is not connected in the PowerShell, open SSMS and click the "New Query" b
 ## Known Bugs
 
 * Can create duplicate entries of a band or venue that already exists.
+* Adding a band to a venue (& vice versa) doesn't work - issue with event date
 
 ## Specifications
 
